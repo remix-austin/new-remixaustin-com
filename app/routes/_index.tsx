@@ -1,41 +1,40 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from '@remix-run/node';
+import { Link } from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
+    return [
+        { title: 'Remix Austin Meetup' },
+        { name: 'description', content: 'Welcome to Remix Austin Meetup' }
+    ];
 };
 
 export default function Index() {
-  return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+    return (
+        <>
+            {/* Classes added to test prefers-color-scheme */}
+            <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Hello world!
+            </h1>
+
+            <Link
+                to="/"
+                // Classes added to test prefers-color-scheme
+                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+            >
+                <h5
+                    // Classes added to test prefers-color-scheme
+                    className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                    Noteworthy technology acquisitions 2021
+                </h5>
+                <p
+                    // Classes added to test prefers-color-scheme
+                    className="font-normal text-gray-700 dark:text-gray-400"
+                >
+                    Here are the biggest enterprise technology acquisitions of
+                    2021 so far, in reverse chronological order.
+                </p>
+            </Link>
+        </>
+    );
 }
