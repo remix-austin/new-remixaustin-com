@@ -1,12 +1,12 @@
-import type { MetaFunction } from '@remix-run/node';
-import { Link } from '@remix-run/react';
+import type {MetaFunction} from "@remix-run/node"
+import {Link} from "@remix-run/react"
 
 export const meta: MetaFunction = () => {
     return [
-        { title: 'Remix Austin Meetup' },
-        { name: 'description', content: 'Welcome to Remix Austin Meetup' }
-    ];
-};
+        {title: "Remix Austin Meetup"},
+        {name: "description", content: "Welcome to Remix Austin Meetup"},
+    ]
+}
 
 export default function Index() {
     return (
@@ -19,7 +19,7 @@ export default function Index() {
             <Link
                 to="/"
                 // Classes added to test prefers-color-scheme
-                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="block max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
                 <h5
                     // Classes added to test prefers-color-scheme
@@ -36,5 +36,5 @@ export default function Index() {
                 </p>
             </Link>
         </>
-    );
+    )
 }
