@@ -1,0 +1,20 @@
+name: "format"
+
+on: pull_request
+
+jobs:
+    style:
+        name: "format"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "checkout"
+              uses: actions/checkout@v4
+            - name: "setup node"
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  registry-url: https://registry.npmjs.org/
+            - name: "install"
+              run: npm ci
+            - name: "format"
+              run: npm run format
