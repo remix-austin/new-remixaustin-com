@@ -1,6 +1,10 @@
-# Welcome to Remix + Vite!
+# Welcome to Remix Austin (v2)
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+Rebuilding [remixaustin.com](https://remixaustin.com/)
+
+## Figma
+
+[Design mockups](https://www.figma.com/design/c3TgqL3EPtx4lkzb7Ey5z4/Remix-Austin-Meetup-Website?node-id=0-1&t=ASTDJYUi4I1AODkh-1)
 
 ## Development
 
@@ -23,8 +27,6 @@ Then run the app in production mode:
 ```sh
 npm start
 ```
-
-Now you'll need to pick a host to deploy it to.
 
 ### DIY
 
