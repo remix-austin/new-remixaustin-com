@@ -3,6 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "react-router dev",
+        "fmt": "biome check --assists-enabled=true --write .",
         "db:generate": "dotenv -- drizzle-kit generate",
         "db:migrate": "wrangler d1 migrations apply --local DB",
         "db:migrate-production": "dotenv -- drizzle-kit migrate",
@@ -21,6 +22,7 @@
         "react-router": "^7.3.0"
     },
     "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
         "@cloudflare/workers-types": "^4.20250303.0",
         "@react-router/dev": "^7.3.0",
         "@tailwindcss/vite": "^4.0.0",

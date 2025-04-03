@@ -1,0 +1,120 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "formatter": {
+        "enabled": true,
+
+        "lineWidth": 100,
+        "indentWidth": 4
+    },
+    "javascript": {
+        "formatter": {
+            "arrowParentheses": "asNeeded",
+            "semicolons": "always",
+            "quoteStyle": "double"
+        }
+    },
+    "css": {
+        "formatter": {
+            "quoteStyle": "double"
+        }
+    },
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "noUnusedImports": "warn",
+                "noUnusedFunctionParameters": "warn",
+                "noUnusedPrivateClassMembers": "warn",
+                "useExhaustiveDependencies": "warn",
+                "useHookAtTopLevel": "error",
+                "noEmptyPattern": "warn"
+            },
+            "suspicious": {
+                "noEmptyInterface": "warn"
+            },
+            "complexity": {
+                "noBannedTypes": "warn"
+            },
+            "nursery": {
+                "noCommonJs": "warn",
+                "noDocumentCookie": "error",
+                "noDuplicateCustomProperties": "error",
+                "noDuplicateElseIf": "error",
+                "noDuplicateProperties": "error",
+                "noEnum": "error",
+                "noIrregularWhitespace": "error",
+                "noSecrets": "error",
+                "noSubstr": "warn",
+                "noTemplateCurlyInString": "warn",
+                "noUnknownPseudoClass": "error",
+                "noUnknownPseudoElement": "error",
+                "noUnknownTypeSelector": "error",
+                "noUselessEscapeInRegex": "warn",
+                "noUselessStringRaw": "warn",
+                "useAtIndex": "warn",
+                "useCollapsedIf": "warn",
+                "useComponentExportOnlyModules": {
+                    "level": "error",
+                    "options": {
+                        "allowExportNames": [
+                            "loader",
+                            "clientLoader",
+                            "action",
+                            "clientAction",
+                            "ErrorBoundary",
+                            "HydrateFallback",
+                            "headers",
+                            "handle",
+                            "links",
+                            "meta",
+                            "shouldRevalidate"
+                        ]
+                    }
+                },
+                "useConsistentMemberAccessibility": {
+                    "level": "error",
+                    "options": {
+                        "accessibility": "none"
+                    }
+                },
+                "useSortedClasses": {
+                    "level": "error",
+                    "options": {
+                        "attributes": ["className"],
+                        "functions": ["cva", "cx", "clsx"]
+                    }
+                },
+                "useTrimStartEnd": "error",
+                "useValidAutocomplete": "error"
+            },
+            "performance": {
+                "noBarrelFile": "warn",
+                "useTopLevelRegex": "warn"
+            },
+            "style": {
+                "noNamespace": "error",
+                "noNonNullAssertion": "off",
+                "useFragmentSyntax": "warn",
+                "useImportType": "error",
+                "useNodejsImportProtocol": "error",
+                "useShorthandArrayType": "warn"
+            }
+        }
+    },
+    "assists": {
+        "actions": {
+            "source": {
+                "sortJsxProps": "on"
+            }
+        }
+    }
+}
