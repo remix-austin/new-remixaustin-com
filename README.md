@@ -16,10 +16,23 @@ A modern, production-ready template for building full-stack React applications u
 
 ### Installation
 
+Install Bun (if you don't already have it):
+
+```bash
+# macOS
+brew install oven-sh/bun/bun
+
+# Linux
+curl -fsSL https://bun.sh/install | bash
+
+# Windows
+powershell -c "irm bun.sh/install.ps1|iex"
+```
+
 Install the dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 ### Development
@@ -27,13 +40,13 @@ npm install
 Run an initial database migration:
 
 ```bash
-npm run db:migrate
+bun run db:migrate
 ```
 
 Start the development server with HMR:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
@@ -43,7 +56,7 @@ Your application will be available at `http://localhost:5173`.
 Create a production build:
 
 ```bash
-npm run build
+bun run build
 ```
 
 ## Deployment
@@ -53,7 +66,7 @@ Deployment is done using the Wrangler CLI.
 First, you need to create a d1 database in Cloudflare.
 
 ```sh
-npx wrangler d1 create <name-of-your-database>
+bunx wrangler d1 create <name-of-your-database>
 ```
 
 Be sure to update the `wrangler.toml` file with the correct database name and id.
@@ -61,25 +74,25 @@ Be sure to update the `wrangler.toml` file with the correct database name and id
 You will also need to [update the `drizzle.config.ts` file](https://orm.drizzle.team/docs/guides/d1-http-with-drizzle-kit), and then run the production migration:
 
 ```sh
-npm run db:migrate-production
+bun run db:migrate-production
 ```
 
 To build and deploy directly to production:
 
 ```sh
-npm run deploy
+bun run deploy
 ```
 
 To deploy a preview URL:
 
 ```sh
-npx wrangler versions upload
+bun wrangler versions upload
 ```
 
 You can then promote a version to production after verification or roll it out progressively.
 
 ```sh
-npx wrangler versions deploy
+bun wrangler versions deploy
 ```
 
 ## Styling
