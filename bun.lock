@@ -3,18 +3,18 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@react-router/node": "^7.3.0",
-        "@react-router/serve": "^7.3.0",
+        "@react-router/node": "^7.4.1",
+        "@react-router/serve": "^7.4.1",
         "drizzle-orm": "~0.36.3",
         "isbot": "^5.1.17",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "react-router": "^7.3.0",
+        "react-router": "^7.4.1",
       },
       "devDependencies": {
         "@biomejs/biome": "^1.9.4",
         "@cloudflare/workers-types": "^4.20250303.0",
-        "@react-router/dev": "^7.3.0",
+        "@react-router/dev": "^7.4.1",
         "@tailwindcss/vite": "^4.0.0",
         "@types/node": "^20",
         "@types/react": "^19.0.1",
