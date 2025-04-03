@@ -1,38 +1,91 @@
-# Welcome to Remix Austin (v2)
+# Welcome to React Router!
 
-Rebuilding [remixaustin.com](https://remixaustin.com/)
+A modern, production-ready template for building full-stack React applications using React Router.
 
-## Figma
+## Features
 
-[Design mockups](https://www.figma.com/design/c3TgqL3EPtx4lkzb7Ey5z4/Remix-Austin-Meetup-Website?node-id=0-1&t=ASTDJYUi4I1AODkh-1)
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
 
-## Development
+## Getting Started
 
-Run the Vite dev server:
+### Installation
 
-```shellscript
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Run an initial database migration:
+
+```bash
+npm run db:migrate
+```
+
+Start the development server with HMR:
+
+```bash
 npm run dev
+```
+
+Your application will be available at `http://localhost:5173`.
+
+## Building for Production
+
+Create a production build:
+
+```bash
+npm run build
 ```
 
 ## Deployment
 
-First, build your app for production:
+Deployment is done using the Wrangler CLI.
+
+First, you need to create a d1 database in Cloudflare.
 
 ```sh
-npm run build
+npx wrangler d1 create <name-of-your-database>
 ```
 
-Then run the app in production mode:
+Be sure to update the `wrangler.toml` file with the correct database name and id.
+
+You will also need to [update the `drizzle.config.ts` file](https://orm.drizzle.team/docs/guides/d1-http-with-drizzle-kit), and then run the production migration:
 
 ```sh
-npm start
+npm run db:migrate-production
 ```
 
-### DIY
+To build and deploy directly to production:
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+```sh
+npm run deploy
+```
 
-Make sure to deploy the output of `npm run build`
+To deploy a preview URL:
 
--   `build/server`
--   `build/client`
+```sh
+npx wrangler versions upload
+```
+
+You can then promote a version to production after verification or roll it out progressively.
+
+```sh
+npx wrangler versions deploy
+```
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+---
+
+Built with ❤️ using React Router.
