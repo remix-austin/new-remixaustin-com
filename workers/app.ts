@@ -1,5 +1,5 @@
-import { getLoadContext } from "load-context";
 import { createRequestHandler } from "react-router";
+import { getLoadContext } from "../load-context";
 
 const requestHandler = createRequestHandler(
     () => import("virtual:react-router/server-build"),

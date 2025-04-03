@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "biomejs.biome",
+        "christian-kohler.npm-intellisense",
+        "bradlc.vscode-tailwindcss",
+        "wayou.vscode-todo-highlight"
+    ]
+}
