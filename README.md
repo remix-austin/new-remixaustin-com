@@ -26,11 +26,11 @@ Install Bun (if you don't already have it):
 # macOS
 brew install oven-sh/bun/bun
 
+# Windows
+winget install Oven-sh.Bun
+
 # Linux
 curl -fsSL https://bun.sh/install | bash
-
-# Windows
-powershell -c "irm bun.sh/install.ps1|iex"
 ```
 
 Install the dependencies:
