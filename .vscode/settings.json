@@ -37,7 +37,7 @@
     "explorer.fileNesting.patterns": {
         "*.css": "$(capture).css.map, $(capture).*.css",
         ".env": "*.env, .env.*, .envrc, env.d.ts",
-        "package.json": ".github*, .vscode*, biome*, bun.lock, tsconfig.*, worker-configuration.*, wrangler.toml, workspace.json",
+        "package.json": ".bun-version, .github*, .vscode*, biome*, bun.lock, tsconfig.*, worker-configuration.*, wrangler.toml, workspace.json",
         "readme*": "authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors*",
         "vite.config.*": "drizzle.config.*, react-router.config.*, vitest.config.*, *.plugin.ts"
     },
