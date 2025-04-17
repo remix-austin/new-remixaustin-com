@@ -1,0 +1,37 @@
+name: "ci"
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    lint:
+        name: "biome"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "checkout"
+              uses: actions/checkout@v4
+            - name: "setup bun"
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version-file: ".bun-version"
+            - name: "install"
+              run: bun install --frozen-lockfile
+            - name: "biome"
+              run: bun run fmt
+    typecheck:
+        name: "typecheck"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "checkout"
+              uses: actions/checkout@v4
+            - name: "setup bun"
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version-file: ".bun-version"
+            - name: "📦 install"
+              run: bun install --frozen-lockfile
+            - name: "typecheck"
+              run: bun run typecheck
