@@ -2,8 +2,7 @@ workers_dev = true
 name = "my-worker"
 compatibility_date = "2025-03-11"
 compatibility_flags = ["nodejs_compat"]
-main = "./build/server/index.js"
-assets = { directory = "./build/client/" }
+main = "./workers/app.ts"
 
 [vars]
 VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
