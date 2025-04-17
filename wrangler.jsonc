@@ -1,0 +1,20 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "new-remixaustin-com",
+    "compatibility_date": "2025-04-04",
+    "main": "./workers/app.ts",
+    "vars": {
+        "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
+    },
+    "observability": {
+        "enabled": true
+    },
+    "d1_databases": [
+        {
+            "binding": "DB",
+            "database_name": "db",
+            "database_id": "db",
+            "migrations_dir": "drizzle"
+        }
+    ]
+}
