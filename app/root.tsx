@@ -7,9 +7,9 @@ import {
     isRouteErrorResponse,
 } from "react-router";
 
+import type { PropsWithChildren } from "react";
 import type { Route } from "./+types/root";
 import styles from "./index.css?url";
-import type { PropsWithChildren } from "react";
 
 export const links: Route.LinksFunction = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },

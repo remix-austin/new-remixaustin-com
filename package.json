@@ -1,41 +1,41 @@
 {
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "react-router dev",
-		"fmt": "biome check --write --unsafe --assists-enabled=true .",
-		"db:generate": "dotenv -- drizzle-kit generate",
-		"db:migrate": "wrangler d1 migrations apply --local DB",
-		"db:migrate-production": "dotenv -- drizzle-kit migrate",
-		"build": "react-router build",
-		"start": "wrangler dev",
-		"deploy": "npm run build && wrangler deploy",
-		"typecheck": "wrangler types && react-router typegen && tsc -b"
-	},
-	"dependencies": {
-		"@react-router/node": "^7.4.1",
-		"@react-router/serve": "^7.4.1",
-		"drizzle-orm": "~0.36.3",
-		"isbot": "^5.1.17",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
-		"react-router": "^7.4.1"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@cloudflare/workers-types": "^4.20250303.0",
-		"@react-router/dev": "^7.4.1",
-		"@react-router/fs-routes": "^7.4.1",
-		"@tailwindcss/vite": "^4.0.0",
-		"@types/node": "^20",
-		"@types/react": "^19.0.1",
-		"@types/react-dom": "^19.0.1",
-		"dotenv-cli": "^7.4.3",
-		"drizzle-kit": "~0.28.1",
-		"tailwindcss": "^4.0.0",
-		"typescript": "^5.7.2",
-		"vite": "^5.4.11",
-		"vite-tsconfig-paths": "^5.1.4",
-		"wrangler": "^3.114.1"
-	}
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "react-router dev",
+        "fmt": "biome check --write --unsafe --assists-enabled=true .",
+        "db:generate": "dotenv -- drizzle-kit generate",
+        "db:migrate": "wrangler d1 migrations apply --local DB",
+        "db:migrate-production": "dotenv -- drizzle-kit migrate",
+        "build": "react-router build",
+        "start": "wrangler dev",
+        "deploy": "npm run build && wrangler deploy",
+        "typecheck": "wrangler types && react-router typegen && tsc -b"
+    },
+    "dependencies": {
+        "@react-router/node": "^7.4.1",
+        "@react-router/serve": "^7.4.1",
+        "drizzle-orm": "~0.36.3",
+        "isbot": "^5.1.17",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-router": "^7.4.1"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "@cloudflare/workers-types": "^4.20250303.0",
+        "@react-router/dev": "^7.4.1",
+        "@react-router/fs-routes": "^7.4.1",
+        "@tailwindcss/vite": "^4.0.0",
+        "@types/node": "^20",
+        "@types/react": "^19.0.1",
+        "@types/react-dom": "^19.0.1",
+        "dotenv-cli": "^7.4.3",
+        "drizzle-kit": "~0.28.1",
+        "tailwindcss": "^4.0.0",
+        "typescript": "^5.7.2",
+        "vite": "^5.4.11",
+        "vite-tsconfig-paths": "^5.1.4",
+        "wrangler": "^3.114.1"
+    }
 }

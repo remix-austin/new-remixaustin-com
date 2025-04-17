@@ -1,7 +1,7 @@
 import * as schema from "~/database/schema";
 
-import { Welcome } from "./welcome";
 import type { Route } from "../+types/home";
+import { Welcome } from "./welcome";
 
 export function meta() {
     return [{ title: "Remix Austin" }];
