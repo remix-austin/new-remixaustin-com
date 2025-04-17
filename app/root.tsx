@@ -9,7 +9,7 @@ import {
 
 import type { PropsWithChildren } from "react";
 import type { Route } from "./+types/root";
-import styles from "./index.css?url";
+import styles from "~/styles/index.css?url";
 
 export const links: Route.LinksFunction = () => [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
