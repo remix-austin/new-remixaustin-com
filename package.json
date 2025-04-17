@@ -2,12 +2,12 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "react-router dev",
+        "dev": "vite dev",
         "fmt": "biome check --write --unsafe --assists-enabled=true .",
         "db:generate": "dotenv -- drizzle-kit generate",
         "db:migrate": "wrangler d1 migrations apply --local DB",
         "db:migrate-production": "dotenv -- drizzle-kit migrate",
-        "build": "react-router build",
+        "build": "vite build",
         "start": "wrangler dev",
         "deploy": "npm run build && wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
