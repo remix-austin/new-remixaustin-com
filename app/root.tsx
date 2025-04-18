@@ -58,6 +58,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     console.log(error);
 
     if (isRouteErrorResponse(error)) {
+        // biome-ignore lint/nursery/noSecrets: <explanation>
         console.log("isRouteErrorResponse");
         console.log(error.status);
         console.log(error.statusText);
