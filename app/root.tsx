@@ -55,26 +55,13 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     let details = "An unexpected error occurred.";
     let stack: string | undefined;
 
-    console.log(error);
-
     if (isRouteErrorResponse(error)) {
-        // biome-ignore lint/nursery/noSecrets: <explanation>
-        console.log("isRouteErrorResponse");
-        console.log(error.status);
-        console.log(error.statusText);
-        console.log(error.data);
-
         message = error.status === 404 ? "404" : "Error";
         details =
             error.status === 404
                 ? "The requested page could not be found."
                 : error.statusText || details;
     } else if (import.meta.env.DEV && error && error instanceof Error) {
-        console.log("isError");
-        console.log(error.message);
-        console.log(error.stack);
-        console.log(error.name);
-
         details = error.message;
         stack = error.stack;
     }
