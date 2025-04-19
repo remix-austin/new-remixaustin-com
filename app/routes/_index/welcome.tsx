@@ -6,14 +6,12 @@ import logoLight from "./logo-light.svg";
 export function Welcome({
     guestBook,
     guestBookError,
-    message,
 }: {
     guestBook: {
         name: string;
         id: number;
     }[];
     guestBookError?: string;
-    message: string;
 }) {
     const navigation = useNavigation();
 
@@ -53,7 +51,6 @@ export function Welcome({
                                     </a>
                                 </li>
                             ))}
-                            <li className="self-stretch p-3 leading-normal">{message}</li>
                         </ul>
                     </nav>
                     <section className="space-y-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
@@ -97,7 +94,6 @@ export function Welcome({
                             )}
                         </Form>
                         <ul className="text-center">
-                            {<li className="p-3">{message}</li>}
                             {guestBook.map(({ id, name }) => (
                                 <li className="p-3" key={id}>
                                     {name}
