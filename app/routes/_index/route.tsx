@@ -36,18 +36,9 @@ export async function loader({ context }: Route.LoaderArgs) {
         },
     });
 
-    return {
-        guestBook,
-        message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE,
-    };
+    return { guestBook };
 }
 
 export default function Home({ actionData, loaderData }: Route.ComponentProps) {
-    return (
-        <Welcome
-            guestBook={loaderData.guestBook}
-            guestBookError={actionData?.guestBookError}
-            message={loaderData.message}
-        />
-    );
+    return <Welcome guestBook={loaderData.guestBook} guestBookError={actionData?.guestBookError} />;
 }

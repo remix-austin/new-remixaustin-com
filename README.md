@@ -65,6 +65,8 @@ bun run build
 
 ## Deployment
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/remix-austin/new-remixaustin-com)
+
 Deployment is done using the Wrangler CLI.
 
 First, you need to create a d1 database in Cloudflare.

@@ -6,8 +6,8 @@ export default {
     dialect: "sqlite",
     driver: "d1-http",
     dbCredentials: {
-        databaseId: "your-database-id",
         accountId: process.env.CLOUDFLARE_ACCOUNT_ID!,
+        databaseId: process.env.CLOUDFLARE_DATABASE_ID!,
         token: process.env.CLOUDFLARE_TOKEN!,
     },
 } satisfies Config;
