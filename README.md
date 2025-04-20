@@ -86,7 +86,7 @@ CLOUDFLARE_TOKEN=clouflare_token
 You will also have to update the commands to build and deploy in the Cloudflare Dashboard.
 
 | Name                                 | Command               |
-|--------------------------------------|-----------------------|
+|:-------------------------------------|:----------------------|
 | Build command                        | `bun run build`       |
 | Deploy command                       | `bun run deploy:prod` |
 | Non-production branch deploy command | `bun run deploy:dev`  |
