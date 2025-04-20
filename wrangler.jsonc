@@ -10,8 +10,8 @@
     "d1_databases": [
         {
             "binding": "DB",
-            "database_name": "new-remixaustin-com",
-            "database_id": "16874e82-0d56-431d-826e-8bc22a943d76",
+            "database_name": "new-remixaustin-com-d1",
+            "database_id": "a20fbcbc-e08e-48fc-9a80-58ed97d050eb",
             "migrations_dir": "drizzle"
         }
     ]

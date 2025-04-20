@@ -22,7 +22,7 @@ https://www.figma.com/design/c3TgqL3EPtx4lkzb7Ey5z4/Remix-Austin-Meetup-Website?
 
 Install Bun (if you don't already have it):
 
-```bash
+```zsh
 # macOS
 brew install oven-sh/bun/bun
 
@@ -35,7 +35,7 @@ curl -fsSL https://bun.sh/install | bash
 
 Install the dependencies:
 
-```bash
+```zsh
 bun install
 ```
 
@@ -43,13 +43,13 @@ bun install
 
 Run an initial database migration:
 
-```bash
-bun run db:migrate
+```zsh
+bun run db:migrate:dev
 ```
 
 Start the development server with HMR:
 
-```bash
+```zsh
 bun run dev
 ```
 
@@ -59,51 +59,65 @@ Your application will be available at `http://localhost:5173`.
 
 Create a production build:
 
-```bash
+```zsh
 bun run build
 ```
 
 ## Deployment
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/remix-austin/new-remixaustin-com)
-
 Deployment is done using the Wrangler CLI.
 
-First, you need to create a d1 database in Cloudflare.
+First, you need to create a D1 database in Cloudflare.
 
-```sh
-bunx wrangler d1 create <name-of-your-database>
+```zsh
+bunx wrangler d1 create new-remixaustin-com-d1
 ```
 
-Be sure to update the `wrangler.toml` file with the correct database name and id.
+Then update the [`wrangler.jsonc`](wrangler.jsonc) file with the correct `database_name` and `database_id`.
 
-You will also need to [update the `drizzle.config.ts` file](https://orm.drizzle.team/docs/guides/d1-http-with-drizzle-kit), and then run the production migration:
+You will also need to add the following environment variables to the [`.env`](.env.example) file and as Cloudflare build secrets.
 
-```sh
-bun run db:migrate-production
+```env
+CLOUDFLARE_ACCOUNT_ID=cloudflare_account_id
+CLOUDFLARE_DATABASE_ID=cloudflare_database_id
+CLOUDFLARE_TOKEN=clouflare_token
 ```
 
-To build and deploy directly to production:
+You will also have to update the commands to build and deploy in the Cloudflare Dashboard.
 
-```sh
+| Name                                 | Command               |
+|:-------------------------------------|:----------------------|
+| Build command                        | `bun run build`       |
+| Deploy command                       | `bun run deploy:prod` |
+| Non-production branch deploy command | `bun run deploy:dev`  |
+
+Next, run the production database migration.
+
+```zsh
+bun run db:migrate:prod
+```
+
+Finally, you can deploy the application to Cloudflare.
+
+```zsh
 bun run deploy
 ```
 
-To deploy a preview URL:
+To deploy a preview, use this command.
 
-```sh
+```zsh
 bun wrangler versions upload
 ```
 
 You can then promote a version to production after verification or roll it out progressively.
 
-```sh
+```zsh
 bun wrangler versions deploy
 ```
 
 ## Styling
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+This template comes with [Tailwind CSS](https://tailwindcss.com) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
 ---
 
