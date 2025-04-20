@@ -9,7 +9,8 @@
         "db:migrate-production": "dotenv -- drizzle-kit migrate",
         "build": "vite build",
         "start": "wrangler dev",
-        "deploy": "npm run build && wrangler deploy",
+        "deploy:dev": "wrangler deploy",
+        "deploy:prod": "npm run db:migrate-production && wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
     },
     "dependencies": {
@@ -37,6 +38,6 @@
         "typescript": "^5.8.3",
         "vite": "^6.3.1",
         "vite-tsconfig-paths": "^5.1.4",
-        "wrangler": "^3.114.6"
+        "wrangler": "^4.12.0"
     }
 }
