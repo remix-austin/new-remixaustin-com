@@ -5,12 +5,12 @@
         "dev": "vite dev",
         "fmt": "biome check --write --unsafe --assists-enabled=true .",
         "db:generate": "dotenv -- drizzle-kit generate",
-        "db:migrate": "wrangler d1 migrations apply --local DB",
-        "db:migrate-production": "dotenv -- drizzle-kit migrate",
+        "db:migrate:dev": "wrangler d1 migrations apply --local DB",
+        "db:migrate:prod": "dotenv -- drizzle-kit migrate",
         "build": "vite build",
         "start": "wrangler dev",
         "deploy:dev": "wrangler deploy",
-        "deploy:prod": "npm run db:migrate-production && wrangler deploy",
+        "deploy:prod": "npm run db:migrate:prod && wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
     },
     "dependencies": {
