@@ -3,7 +3,7 @@
 *.tsbuildinfo
 
 # Environment
-*.env*
+*.env
 *.vars*
 
 # React Router
