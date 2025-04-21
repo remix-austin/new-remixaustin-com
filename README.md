@@ -80,7 +80,7 @@ You will also need to add the following environment variables to the [`.env`](.e
 ```env
 CLOUDFLARE_ACCOUNT_ID=cloudflare_account_id
 CLOUDFLARE_DATABASE_ID=cloudflare_database_id
-CLOUDFLARE_TOKEN=clouflare_token
+CLOUDFLARE_API_TOKEN=clouflare_token
 ```
 
 You will also have to update the commands to build and deploy in the Cloudflare Dashboard.
