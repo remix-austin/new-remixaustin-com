@@ -57,7 +57,7 @@ Your application will be available at `http://localhost:5173`.
 
 ## Building for Production
 
-Create a production build:
+Create a production build.
 
 ```zsh
 bun run build
@@ -100,20 +100,10 @@ bun run db:migrate:prod
 Finally, you can deploy the application to Cloudflare.
 
 ```zsh
-bun run deploy
+bun run deploy:prod
 ```
 
-To deploy a preview, use this command.
-
-```zsh
-bun wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```zsh
-bun wrangler versions deploy
-```
+The website is deployed automatically when versions are tagged. See the [deploy.yml](.github/workflows/deploy.yml) file for more information.
 
 ## Styling
 

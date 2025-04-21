@@ -1,4 +1,6 @@
 {
+    "name": "new-remixaustin-com",
+    "version": "0.0.1",
     "private": true,
     "type": "module",
     "scripts": {
@@ -9,8 +11,8 @@
         "db:migrate:prod": "dotenv -- drizzle-kit migrate",
         "build": "vite build",
         "start": "wrangler dev",
-        "deploy:dev": "wrangler deploy",
-        "deploy:prod": "npm run db:migrate:prod && wrangler deploy",
+        "deploy:dev": "wrangler versions upload",
+        "deploy:prod": "wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
     },
     "dependencies": {

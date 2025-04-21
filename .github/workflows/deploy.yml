@@ -1,0 +1,25 @@
+name: "deploy"
+
+on:
+  release:
+      types: [published]
+
+jobs:
+    deploy:
+        name: "deploy"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "checkout"
+              uses: actions/checkout@v4
+            - name: "setup bun"
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version-file: ".bun-version"
+            - name: "install"
+              run: bun install --frozen-lockfile
+            - name: "build"
+              run: bun run build
+            - name: "migrate"
+              run: bun run db:migrate:prod
+            - name: "deploy"
+              run: bun run deploy:prod
