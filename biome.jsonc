@@ -116,5 +116,8 @@
                 "sortJsxProps": "on"
             }
         }
+    },
+    "files": {
+        "ignore": ["worker-configuration.d.ts"]
     }
 }
