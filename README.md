@@ -103,7 +103,7 @@ Finally, you can deploy the application to Cloudflare.
 bun run deploy:prod
 ```
 
-The website is deployed automatically when versions are tagged. See the [deploy.yml](.github/workflows/deploy.yml) file for more information.
+The website is deployed automatically changes are merged into `main`.
 
 ## Styling
 
