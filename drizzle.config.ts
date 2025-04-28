@@ -37,6 +37,9 @@ const common = {
     out: "./drizzle",
     schema: "./database/schema.ts",
     dialect: "sqlite",
+    migrations: {
+        table: "drizzle"
+    }
 } satisfies Config;
 
 const localConfig = {
