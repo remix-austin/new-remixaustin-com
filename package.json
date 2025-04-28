@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite dev",
         "fmt": "biome check --write --unsafe --assists-enabled=true .",
-        "db:generate": "drizzle-kit generate",
+        "db:generate": "NODE_ENV=development drizzle-kit generate",
         "db:migrate:dev": "NODE_ENV=development drizzle-kit migrate",
         "db:migrate:prod": "NODE_ENV=production drizzle-kit migrate",
         "db:studio:dev": "NODE_ENV=development drizzle-kit studio",

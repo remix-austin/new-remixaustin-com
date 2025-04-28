@@ -26,7 +26,7 @@ const getDbUrl = () => {
     const latestFile = files[0];
 
     if (!latestFile) {
-        throw new Error("No SQLite files found in the D1 directory.");
+        throw new Error("\nNo SQLite files found locally.\nRun `bun run db:migrate:dev` to create one.\n");
     }
 
     const dbUrl = path.join(d1Directory, latestFile.name);
