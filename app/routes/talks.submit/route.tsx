@@ -35,6 +35,7 @@ export default function Submit() {
                     id="name"
                     name="name"
                     type="text"
+                    autoComplete="name"
                 />
 
                 <label htmlFor="email">Email</label>
@@ -43,6 +44,7 @@ export default function Submit() {
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
                 />
 
                 <label htmlFor="phone">Phone</label>
@@ -51,6 +53,7 @@ export default function Submit() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    autoComplete="tel"
                 />
 
                 <label htmlFor="title">Title</label>
