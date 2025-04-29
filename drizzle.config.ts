@@ -1,6 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Config } from "drizzle-kit";
-import fs from "node:fs"
-import path from "node:path"
 
 const getDbUrl = () => {
     const d1Directory = path.join(
@@ -19,14 +19,16 @@ const getDbUrl = () => {
             return {
                 name: file,
                 time,
-            }
+            };
         })
         .sort((a, b) => b.time - a.time);
 
     const latestFile = files[0];
 
     if (!latestFile) {
-        throw new Error("\nNo SQLite files found locally.\nRun `bun run db:migrate:dev` to create one.\n");
+        throw new Error(
+            "\nNo SQLite files found locally.\nRun `bun run db:migrate:dev` to create one.\n",
+        );
     }
 
     const dbUrl = path.join(d1Directory, latestFile.name);
@@ -38,8 +40,8 @@ const common = {
     schema: "./database/schema.ts",
     dialect: "sqlite",
     migrations: {
-        table: "drizzle"
-    }
+        table: "drizzle",
+    },
 } satisfies Config;
 
 const localConfig = {
@@ -60,4 +62,4 @@ const remoteConfig = {
 } satisfies Config;
 
 const config = process.env.NODE_ENV !== "production" ? localConfig : remoteConfig;
-export default config
+export default config;
