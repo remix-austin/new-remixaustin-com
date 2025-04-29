@@ -1,6 +1,7 @@
 import { Form } from "react-router";
 import type { Route } from "./+types/route";
 import { z } from "zod";
+import { parseFormData } from "~/utils/forms";
 
 export function meta() {
     return [{ title: "Remix Austin | Submit a talk" }];
@@ -15,9 +16,7 @@ export async function action({ request }: Route.ActionArgs) {
         description: z.string(),
     });
 
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData.entries());
-    const submission = schema.safeParse(data);
+    const submission = await parseFormData(request, schema);
 
     console.log(submission);
     return {submission}
