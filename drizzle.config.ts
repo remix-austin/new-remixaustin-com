@@ -61,7 +61,5 @@ const remoteConfig = {
     },
 } satisfies Config;
 
-console.log({NODEENV: process.env.NODE_ENV});
-
 const config = process.env.NODE_ENV !== "production" ? localConfig : remoteConfig;
 export default config;
