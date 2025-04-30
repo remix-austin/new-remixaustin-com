@@ -12,17 +12,17 @@ const guestBook = sqliteTable("guestBook", {
     email: text().notNull().unique(),
 });
 
-const talk = sqliteTable("talk", {
+const talks = sqliteTable("talks", {
     id: integer().primaryKey({ autoIncrement: true }).notNull(),
     name: text().notNull(),
     email: text().notNull(),
     phone: text().notNull(),
     title: text().notNull(),
     description: text().notNull(),
-    status: text({enum: ["submitted", "rejected", "scheduled", "completed"]}).notNull(),
-    date: text().default(sql`(CURRENT_DATE)`),
+    status: text({enum: ["submitted", "rejected", "scheduled", "completed"]}).default("submitted"),
+    date: text(),
     link: text(),
     ...timestamps,
 })
 
-export {guestBook, talk}
+export {guestBook, talks}
