@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "116e53be-38f3-4898-b9b3-2700ef5ffb74",
+  "id": "03a18331-c968-4675-9d9d-6a650be48d92",
   "prevId": "008ee181-36ed-4cc3-b593-481f13e2254a",
   "tables": {
     "guestBook": {
@@ -43,8 +43,8 @@
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
-    "talk": {
-      "name": "talk",
+    "talks": {
+      "name": "talks",
       "columns": {
         "id": {
           "name": "id",
@@ -92,16 +92,16 @@
           "name": "status",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'submitted'"
         },
         "date": {
           "name": "date",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
-          "default": "(CURRENT_DATE)"
+          "autoincrement": false
         },
         "link": {
           "name": "link",
