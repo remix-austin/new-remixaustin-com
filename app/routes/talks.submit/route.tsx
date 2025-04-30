@@ -2,12 +2,13 @@ import { Form } from "react-router";
 import { z } from "zod";
 import { parseFormData } from "~/utils/forms";
 import type { Route } from "./+types/route";
+import { talks } from "~/database/schema";
 
 export function meta() {
     return [{ title: "Remix Austin | Submit a talk" }];
 }
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({ request, context }: Route.ActionArgs) {
     const schema = z.object({
         name: z.string(),
         email: z.string().email(),
@@ -16,9 +17,9 @@ export async function action({ request }: Route.ActionArgs) {
         description: z.string(),
     });
 
-    const submission = await parseFormData(request, schema);
+    const formData = await parseFormData(request, schema);
+    const submission = await context.db.insert(talks).values(formData)
 
-    console.log(submission);
     return { submission };
 }
 
