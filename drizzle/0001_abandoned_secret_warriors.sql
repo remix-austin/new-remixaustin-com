@@ -8,6 +8,6 @@ CREATE TABLE `talks` (
 	`status` text DEFAULT 'submitted',
 	`date` text,
 	`link` text,
-	`updatedAt` integer,
+	`updatedAt` integer DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`createdAt` integer DEFAULT (CURRENT_TIMESTAMP) NOT NULL
 );

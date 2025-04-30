@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 const timestamps = {
-    updatedAt: integer(),
+    updatedAt: integer().default(sql`(CURRENT_TIMESTAMP)`).notNull(),
     createdAt: integer().default(sql`(CURRENT_TIMESTAMP)`).notNull(),
 }
 

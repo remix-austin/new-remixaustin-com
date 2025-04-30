@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "03a18331-c968-4675-9d9d-6a650be48d92",
+  "id": "4642c0d8-49d7-41be-95e2-a5d5102b253b",
   "prevId": "008ee181-36ed-4cc3-b593-481f13e2254a",
   "tables": {
     "guestBook": {
@@ -114,8 +114,9 @@
           "name": "updatedAt",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(CURRENT_TIMESTAMP)"
         },
         "createdAt": {
           "name": "createdAt",
