@@ -12,7 +12,7 @@
         "build": "vite build",
         "start": "wrangler dev",
         "deploy:dev": "wrangler versions upload",
-        "deploy:prod": "wrangler deploy",
+        "deploy:prod": "bun run db:migrate:prod && wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
     },
     "dependencies": {
