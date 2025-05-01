@@ -4,15 +4,13 @@
     "scripts": {
         "dev": "vite dev",
         "fmt": "biome check --write --unsafe --assists-enabled=true .",
-        "db:generate": "NODE_ENV=development drizzle-kit generate",
-        "db:migrate:dev": "NODE_ENV=development drizzle-kit migrate",
-        "db:migrate:prod": "NODE_ENV=production drizzle-kit migrate",
-        "db:studio:dev": "NODE_ENV=development drizzle-kit studio",
-        "db:studio:prod": "NODE_ENV=production drizzle-kit studio",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:studio": "drizzle-kit studio",
         "build": "vite build",
         "start": "wrangler dev",
         "deploy:dev": "wrangler versions upload",
-        "deploy:prod": "bun run db:migrate:prod && wrangler deploy",
+        "deploy:prod": "bun run db:migrate && wrangler deploy",
         "typecheck": "wrangler types && react-router typegen && tsc -b"
     },
     "dependencies": {

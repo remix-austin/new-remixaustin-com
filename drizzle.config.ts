@@ -27,7 +27,7 @@ const getDbUrl = () => {
 
     if (!latestFile) {
         throw new Error(
-            "\nNo SQLite files found locally.\nRun `bun run db:migrate:dev` to create one.\n",
+            "\nNo SQLite files found locally.\nRun `bun run db:migrate` to create one.\n",
         );
     }
 
@@ -61,5 +61,5 @@ const remoteConfig = {
     },
 } satisfies Config;
 
-const config = process.env.NODE_ENV !== "production" ? localConfig : remoteConfig;
+const config = process.env.CI ? remoteConfig : localConfig;
 export default config;

@@ -44,7 +44,7 @@ bun install
 Run an initial database migration:
 
 ```zsh
-bun run db:migrate:dev
+bun run db:migrate
 ```
 
 Start the development server with HMR:
@@ -94,7 +94,7 @@ You will also have to update the commands to build and deploy in the Cloudflare 
 Next, run the production database migration.
 
 ```zsh
-bun run db:migrate:prod
+bun run db:migrate
 ```
 
 Finally, you can deploy the application to Cloudflare.
