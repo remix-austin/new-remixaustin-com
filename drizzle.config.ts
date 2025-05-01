@@ -8,6 +8,12 @@ const getDbUrl = () => {
         ".wrangler/state/v3/d1/miniflare-D1DatabaseObject",
     );
 
+    if(!fs.existsSync(d1Directory)) {
+        throw new Error(
+            "\nNo SQLite files found locally.\nRun `bun run db:migrate` to create one.\n",
+        );
+    }
+
     const files = fs
         .readdirSync(d1Directory)
         .filter(file => file.endsWith(".sqlite"))
@@ -44,12 +50,18 @@ const common = {
     },
 } satisfies Config;
 
-const localConfig = {
-    ...common,
-    dbCredentials: {
-        url: getDbUrl(),
-    },
-} satisfies Config;
+const createLocalConfig = () => {
+    const dbUrl = getDbUrl();
+
+    const localConfig = {
+        ...common,
+        dbCredentials: {
+            url: dbUrl,
+        },
+    } satisfies Config;
+
+    return localConfig
+};
 
 const remoteConfig = {
     ...common,
@@ -61,5 +73,5 @@ const remoteConfig = {
     },
 } satisfies Config;
 
-const config = process.env.CI ? remoteConfig : localConfig;
+const config = process.env.CI ? remoteConfig : createLocalConfig();
 export default config;
