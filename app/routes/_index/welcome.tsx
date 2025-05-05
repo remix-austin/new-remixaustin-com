@@ -1,20 +1,7 @@
-import { Form, useNavigation } from "react-router";
-
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 
-export function Welcome({
-    guestBook,
-    guestBookError,
-}: {
-    guestBook: {
-        name: string;
-        id: number;
-    }[];
-    guestBookError?: string;
-}) {
-    const navigation = useNavigation();
-
+export function Welcome() {
     return (
         <main className="flex items-center justify-center pt-16 pb-4">
             <div className="flex min-h-0 flex-1 flex-col items-center gap-16">
@@ -53,54 +40,6 @@ export function Welcome({
                             ))}
                         </ul>
                     </nav>
-                    <section className="space-y-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
-                        <Form
-                            className="w-full max-w-lg space-y-4"
-                            method="post"
-                            onSubmit={event => {
-                                if (navigation.state === "submitting") {
-                                    event.preventDefault();
-                                }
-                                const form = event.currentTarget;
-                                requestAnimationFrame(() => {
-                                    form.reset();
-                                });
-                            }}
-                        >
-                            <input
-                                aria-label="Name"
-                                className="h-10 w-full rounded-lg border border-gray-200 px-3 focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:focus:ring-blue-500"
-                                name="name"
-                                placeholder="Name"
-                                required
-                            />
-                            <input
-                                aria-label="Email"
-                                className="h-10 w-full rounded-lg border border-gray-200 px-3 focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:focus:ring-blue-500"
-                                name="email"
-                                placeholder="your@email.com"
-                                required
-                                type="email"
-                            />
-                            <button
-                                className="h-10 w-full rounded-lg bg-blue-500 px-3 text-white hover:bg-blue-600"
-                                disabled={navigation.state === "submitting"}
-                                type="submit"
-                            >
-                                Sign Guest Book
-                            </button>
-                            {guestBookError && (
-                                <p className="text-red-500 dark:text-red-400">{guestBookError}</p>
-                            )}
-                        </Form>
-                        <ul className="text-center">
-                            {guestBook.map(({ id, name }) => (
-                                <li className="p-3" key={id}>
-                                    {name}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
                 </div>
             </div>
         </main>
