@@ -10,6 +10,15 @@ export default function SignIn() {
             <h1 className="mb-8 font-bold text-2xl">Sign in to tonight's meetup</h1>
 
             <Form className="grid max-w-md" method="post">
+                <input
+                    autoComplete="organization"
+                    className="mb-4 rounded border border-black px-4 py-2"
+                    id="date"
+                    name="date"
+                    type="hidden"
+                    value={new Date().toISOString()}
+                />
+
                 <label htmlFor="firstName">First Name</label>
                 <input
                     autoComplete="given-name"
