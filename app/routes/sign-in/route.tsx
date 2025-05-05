@@ -1,7 +1,30 @@
 import { Form } from "react-router";
+import { z } from "zod";
+import type { Route } from "./+types/route";
+import { parseFormData } from "~/utils/forms";
+import { repeatableOfType, zfd } from "zod-form-data";
 
 export function meta() {
     return [{ title: "Remix Austin | Sign In" }];
+}
+
+export async function action({ request }: Route.ActionArgs) {
+    const schema = zfd.formData({
+        date: z.string(),
+        firstName: z.string(),
+        lastName: z.string(),
+        email: z.string().email(),
+        company: z.string(),
+        attendance: z.enum(["inPerson", "remote"]),
+        familiarity: z.enum(["new", "heard", "some", "proficient"]),
+        referrer: z.enum(["website", "meetup", "friend", "twitter", "linkedin", "search", "other"]),
+        desires: repeatableOfType(z.enum(["community", "remix", "talks", "other"])),
+    });
+
+    const formData = await parseFormData(request, schema);
+    console.log(formData);
+
+    return { formData };
 }
 
 export default function SignIn() {
@@ -127,8 +150,8 @@ export default function SignIn() {
                     </div>
 
                     <div className="flex gap-x-2">
-                        <input id="other" name="referrer" type="radio" value="other" />
-                        <label htmlFor="other">Other</label>
+                        <input id="otherReferrer" name="referrer" type="radio" value="other" />
+                        <label htmlFor="otherReferrer">Other</label>
                     </div>
                 </fieldset>
 
@@ -136,23 +159,23 @@ export default function SignIn() {
                     <legend className="mb-2">What do you want to get out of the meetup?</legend>
 
                     <div className="flex gap-x-2">
-                        <input id="community" name="referrer" type="checkbox" value={0} />
+                        <input id="community" name="desires" type="checkbox" value="community" />
                         <label htmlFor="community">Community</label>
                     </div>
 
                     <div className="flex gap-x-2">
-                        <input id="remix" name="referrer" type="checkbox" value={1} />
+                        <input id="remix" name="desires" type="checkbox" value="remix" />
                         <label htmlFor="remix">Remix experience</label>
                     </div>
 
                     <div className="flex gap-x-2">
-                        <input id="talks" name="referrer" type="checkbox" value={2} />
+                        <input id="talks" name="desires" type="checkbox" value="talks" />
                         <label htmlFor="talks">Tech talks</label>
                     </div>
 
                     <div className="flex gap-x-2">
-                        <input id="other" name="referrer" type="checkbox" value={3} />
-                        <label htmlFor="other">Other</label>
+                        <input id="otherDesires" name="desires" type="checkbox" value="other" />
+                        <label htmlFor="otherDesires">Other</label>
                     </div>
                 </fieldset>
 
