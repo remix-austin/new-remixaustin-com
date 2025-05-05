@@ -39,6 +39,6 @@ export async function loader({ context }: Route.LoaderArgs) {
     return { guestBook };
 }
 
-export default function Home({ actionData, loaderData }: Route.ComponentProps) {
-    return <Welcome guestBook={loaderData.guestBook} guestBookError={actionData?.guestBookError} />;
+export default function Home() {
+    return <Welcome />;
 }
