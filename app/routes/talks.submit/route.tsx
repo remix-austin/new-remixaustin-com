@@ -18,7 +18,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     });
 
     const formData = await parseFormData(request, schema);
-    const submission = await context.db.insert(talks).values(formData)
+    const submission = await context.db.insert(talks).values(formData);
 
     return { submission };
 }
