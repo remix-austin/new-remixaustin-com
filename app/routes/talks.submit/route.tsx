@@ -4,10 +4,6 @@ import { parseFormData } from "~/utils/forms";
 import type { Route } from "./+types/route";
 import { talks } from "~/database/schema";
 
-export function meta() {
-    return [{ title: "Remix Austin | Submit a talk" }];
-}
-
 export async function action({ request, context }: Route.ActionArgs) {
     const schema = z.object({
         name: z.string(),
@@ -18,7 +14,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     });
 
     const formData = await parseFormData(request, schema);
-    const submission = await context.db.insert(talks).values(formData)
+    const submission = await context.db.insert(talks).values(formData);
 
     return { submission };
 }
@@ -26,6 +22,7 @@ export async function action({ request, context }: Route.ActionArgs) {
 export default function Submit() {
     return (
         <>
+            <title>Remix Austin | Submit a talk</title>
             <h1 className="mb-8 font-bold text-2xl">Submit a talk</h1>
 
             <Form className="grid max-w-md" method="post">
