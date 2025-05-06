@@ -3,9 +3,10 @@ import { z } from "zod";
 import { parseFormData } from "~/utils/forms";
 import type { Route } from "./+types/route";
 import { talks } from "~/database/schema";
+import { zfd } from "zod-form-data";
 
 export async function action({ request, context }: Route.ActionArgs) {
-    const schema = z.object({
+    const schema = zfd.formData({
         name: z.string(),
         email: z.string().email(),
         phone: z.string(),
