@@ -15,6 +15,13 @@
       "when": 1746036183708,
       "tag": "0001_abandoned_secret_warriors",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1746537584499,
+      "tag": "0002_kind_argent",
+      "breakpoints": true
     }
   ]
 }
