@@ -3,10 +3,6 @@ import * as schema from "~/database/schema";
 import type { Route } from "./+types/route";
 import { Welcome } from "./welcome";
 
-export function meta() {
-    return [{ title: "Remix Austin" }];
-}
-
 export async function action({ request, context }: Route.ActionArgs) {
     const formData = await request.formData();
     let name = formData.get("name");
@@ -40,5 +36,10 @@ export async function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function Home({ actionData, loaderData }: Route.ComponentProps) {
-    return <Welcome guestBook={loaderData.guestBook} guestBookError={actionData?.guestBookError} />;
+    return (
+        <>
+            <title>Remix Austin</title>
+            <Welcome guestBook={loaderData.guestBook} guestBookError={actionData?.guestBookError} />
+        </>
+    );
 }
