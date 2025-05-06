@@ -4,10 +4,6 @@ import type { Route } from "./+types/route";
 import { parseFormData } from "~/utils/forms";
 import { repeatableOfType, zfd } from "zod-form-data";
 
-export function meta() {
-    return [{ title: "Remix Austin | Sign In" }];
-}
-
 export async function action({ request }: Route.ActionArgs) {
     const schema = zfd.formData({
         date: z.string(),
@@ -30,6 +26,7 @@ export async function action({ request }: Route.ActionArgs) {
 export default function SignIn() {
     return (
         <>
+            <title>Remix Austin | Sign In</title>
             <h1 className="mb-8 font-bold text-2xl">Sign in to tonight's meetup</h1>
 
             <Form className="grid max-w-md" method="post">

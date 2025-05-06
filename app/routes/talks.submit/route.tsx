@@ -5,10 +5,6 @@ import type { Route } from "./+types/route";
 import { talks } from "~/database/schema";
 import { zfd } from "zod-form-data";
 
-export function meta() {
-    return [{ title: "Remix Austin | Submit a talk" }];
-}
-
 export async function action({ request, context }: Route.ActionArgs) {
     const schema = zfd.formData({
         name: z.string(),
@@ -27,6 +23,7 @@ export async function action({ request, context }: Route.ActionArgs) {
 export default function Submit() {
     return (
         <>
+            <title>Remix Austin | Submit a talk</title>
             <h1 className="mb-8 font-bold text-2xl">Submit a talk</h1>
 
             <Form className="grid max-w-md" method="post">
