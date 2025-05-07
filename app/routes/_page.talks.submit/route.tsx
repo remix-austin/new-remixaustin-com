@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { z } from "zod";
 import { parseFormData } from "~/utils/forms";
 import type { Route } from "./+types/route";
@@ -14,10 +14,11 @@ export async function action({ request, context }: Route.ActionArgs) {
         description: z.string(),
     });
 
-    const formData = await parseFormData(request, schema);
-    const submission = await context.db.insert(talks).values(formData);
+    const submission = await parseFormData(request, schema);
+    await context.db.insert(talks).values(submission);
+    console.log({ submission });
 
-    return { submission };
+    return redirect("/");
 }
 
 export default function Submit() {

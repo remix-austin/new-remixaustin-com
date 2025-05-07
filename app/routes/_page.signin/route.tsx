@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { z } from "zod";
 import type { Route } from "./+types/route";
 import { parseFormData } from "~/utils/forms";
@@ -17,10 +17,10 @@ export async function action({ request }: Route.ActionArgs) {
         desires: repeatableOfType(z.enum(["community", "remix", "talks", "other"])),
     });
 
-    const formData = await parseFormData(request, schema);
-    console.log(formData);
+    const signin = await parseFormData(request, schema);
+    console.log({ signin });
 
-    return { formData };
+    return redirect("/");
 }
 
 export default function SignIn() {
