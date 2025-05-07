@@ -1,22 +1,32 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Config } from "drizzle-kit";
+import { execSync } from "node:child_process";
 
-const getDbUrl = () => {
+const createDatabase = () => {
+    execSync(
+        `wrangler d1 execute DB --command "SELECT name FROM sqlite_master WHERE type='table';"`,
+    );
+
+    execSync("bun run db:migrate");
+
+    const database = getDatabase()!;
+    return database;
+};
+
+const getDatabase = () => {
     const d1Directory = path.join(
         process.cwd(),
         ".wrangler/state/v3/d1/miniflare-D1DatabaseObject",
     );
 
-    if(!fs.existsSync(d1Directory)) {
-        throw new Error(
-            "\nNo SQLite files found locally.\nRun `bun run db:migrate` to create one.\n",
-        );
+    if (!fs.existsSync(d1Directory)) {
+        return null;
     }
 
-    const files = fs
-        .readdirSync(d1Directory)
-        .filter(file => file.endsWith(".sqlite"))
+    const databases = fs.readdirSync(d1Directory).filter(file => file.endsWith(".sqlite"));
+
+    const sortedDatabases = databases
         .map(file => {
             const filePath = path.join(d1Directory, file);
             const stats = fs.statSync(filePath);
@@ -29,16 +39,25 @@ const getDbUrl = () => {
         })
         .sort((a, b) => b.time - a.time);
 
-    const latestFile = files[0];
+    const latestDatabase = sortedDatabases.at(0);
 
-    if (!latestFile) {
-        throw new Error(
-            "\nNo SQLite files found locally.\nRun `bun run db:migrate` to create one.\n",
-        );
+    if (!latestDatabase) {
+        return null;
     }
 
-    const dbUrl = path.join(d1Directory, latestFile.name);
-    return dbUrl;
+    const database = path.join(d1Directory, latestDatabase.name);
+    return database;
+};
+
+const getDbUrl = () => {
+    let database = getDatabase();
+
+    if (!database) {
+        console.warn("\nNo sqlite databases found locally. Creating one now...");
+        database = createDatabase();
+    }
+
+    return database;
 };
 
 const common = {
@@ -60,7 +79,7 @@ const createLocalConfig = () => {
         },
     } satisfies Config;
 
-    return localConfig
+    return localConfig;
 };
 
 const remoteConfig = {
