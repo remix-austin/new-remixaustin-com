@@ -1,12 +1,10 @@
-import { useParams } from "react-router";
+import type { Route } from "./+types/route";
 
-export default function Talk() {
-    const { id } = useParams();
-
+export default function Talk({ params }: Route.ComponentProps) {
     return (
         <>
             <title>Remix Austin | Talk</title>
-            <h1>{`Talk ${id}`}</h1>
+            <h1>{`Talk ${params.id}`}</h1>
         </>
     );
 }
