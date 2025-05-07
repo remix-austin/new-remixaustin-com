@@ -25,7 +25,7 @@ export async function action({ request }: Route.ActionArgs) {
 
 export default function SignIn() {
     return (
-        <>
+        <div className="p-20">
             <title>Remix Austin | Sign In</title>
             <h1 className="mb-8 font-bold text-2xl">Sign in to tonight's meetup</h1>
 
@@ -180,6 +180,6 @@ export default function SignIn() {
                     Submit
                 </button>
             </Form>
-        </>
+        </div>
     );
 }
