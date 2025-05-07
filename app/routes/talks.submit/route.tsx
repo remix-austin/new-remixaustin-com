@@ -22,7 +22,7 @@ export async function action({ request, context }: Route.ActionArgs) {
 
 export default function Submit() {
     return (
-        <>
+        <div className="p-20">
             <title>Remix Austin | Submit a talk</title>
             <h1 className="mb-8 font-bold text-2xl">Submit a talk</h1>
 
@@ -73,6 +73,6 @@ export default function Submit() {
                     Submit
                 </button>
             </Form>
-        </>
+        </div>
     );
 }
