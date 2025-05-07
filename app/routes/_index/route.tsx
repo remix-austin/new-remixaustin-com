@@ -1,54 +1,50 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
-import { resources } from "./resources";
+import LinkButton from "~/components/LinkButton";
+import logo from "~/icons/logo.svg";
 
 export default function Home() {
     return (
         <>
             <title>Remix Austin</title>
 
-            <main className="flex items-center justify-center pt-16 pb-4">
-                <div className="flex min-h-0 flex-1 flex-col items-center gap-16">
-                    <header className="flex flex-col items-center gap-9">
-                        <div className="w-[500px] max-w-[100vw] p-4">
-                            <img
-                                alt="React Router"
-                                className="block w-full dark:hidden"
-                                src={logoLight}
-                            />
+            <header className="grid w-full place-items-center gap-10 bg-(--color-header-bg) p-48">
+                <img alt="Remix Austin" src={logo} />
 
-                            <img
-                                alt="React Router"
-                                className="hidden w-full dark:block"
-                                src={logoDark}
-                            />
-                        </div>
-                    </header>
+                <p className="max-w-xl text-center text-white text-xl">
+                    Join us to connect with developers, share knowledge, and explore the power of
+                    the Remix framework. Whether you're a seasoned pro or just getting started,
+                    there's something here for everyone.
+                </p>
 
-                    <div className="w-full max-w-[300px] space-y-6 px-4">
-                        <nav className="space-y-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
-                            <p className="text-center text-gray-700 leading-6 dark:text-gray-200">
-                                What&apos;s next?
-                            </p>
+                <div className="flex gap-4">
+                    <LinkButton target="_blank" to="https://discord.gg/rZpbp3mQqd">
+                        Discord
+                    </LinkButton>
 
-                            <ul>
-                                {resources.map(({ href, text, icon }) => (
-                                    <li key={href}>
-                                        <a
-                                            className="group flex items-center gap-3 self-stretch p-3 text-blue-700 leading-normal hover:underline dark:text-blue-500"
-                                            href={href}
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            {icon}
-                                            {text}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </div>
+                    <LinkButton target="_blank" to="https://github.com/remix-austin">
+                        GitHub
+                    </LinkButton>
+
+                    <LinkButton to="/signin">Sign In</LinkButton>
+                    <LinkButton to="/talks/submit">Give Talk</LinkButton>
                 </div>
+            </header>
+
+            <main className="grid gap-36 px-20 py-20">
+                <section>
+                    <h2 className="font-bold text-5xl text-black" id="next-meetup">
+                        Next Meetup
+                    </h2>
+
+                    <p>todo</p>
+                </section>
+
+                <section>
+                    <h2 className="font-bold text-5xl text-black" id="previous-talks">
+                        Previous Talks
+                    </h2>
+
+                    <p>todo</p>
+                </section>
             </main>
         </>
     );
