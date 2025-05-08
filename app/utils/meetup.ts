@@ -14,8 +14,12 @@ const MeetupQuery = gql`
                 totalCount
                 edges {
                     node {
-                        dateTime
+                        title
                         description
+                        dateTime
+                        rsvps {
+                            yesCount
+                        }
                     }
                 }
             }
