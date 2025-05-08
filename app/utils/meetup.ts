@@ -16,6 +16,7 @@ const MeetupQuery = gql`
                     node {
                         title
                         description
+                        eventUrl
                         dateTime
                         rsvps {
                             yesCount
@@ -28,6 +29,7 @@ const MeetupQuery = gql`
                 edges {
                     node {
                         title
+                        eventUrl
                         dateTime
                         rsvps {
                             yesCount
