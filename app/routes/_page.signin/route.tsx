@@ -3,8 +3,9 @@ import { z } from "zod";
 import type { Route } from "./+types/route";
 import { parseFormData } from "~/utils/forms";
 import { zfd } from "zod-form-data";
+import { signins } from "~/database/schema";
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({ request, context }: Route.ActionArgs) {
     const schema = zfd.formData({
         date: z.string(),
         firstName: z.string(),
@@ -18,6 +19,7 @@ export async function action({ request }: Route.ActionArgs) {
     });
 
     const signin = await parseFormData(request, schema);
+    await context.db.insert(signins).values(signin);
     console.log({ signin });
 
     return redirect("/");
@@ -79,12 +81,12 @@ export default function SignIn() {
                     <legend className="mb-2">How are you attending?</legend>
 
                     <div className="flex gap-x-2">
-                        <input id="inPerson" name="attendance" type="radio" value="inPerson" />
+                        <input id="inPerson" name="remote" type="radio" value="inPerson" />
                         <label htmlFor="inPerson">In person</label>
                     </div>
 
                     <div className="flex gap-x-2">
-                        <input id="remote" name="attendance" type="radio" value="remote" />
+                        <input id="remote" name="remote" type="radio" value="remote" />
                         <label htmlFor="remote">Remote</label>
                     </div>
                 </fieldset>
