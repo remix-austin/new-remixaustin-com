@@ -2,7 +2,7 @@ import { Form, redirect } from "react-router";
 import { z } from "zod";
 import type { Route } from "./+types/route";
 import { parseFormData } from "~/utils/forms";
-import { repeatableOfType, zfd } from "zod-form-data";
+import { zfd } from "zod-form-data";
 
 export async function action({ request }: Route.ActionArgs) {
     const schema = zfd.formData({
@@ -11,10 +11,10 @@ export async function action({ request }: Route.ActionArgs) {
         lastName: z.string(),
         email: z.string().email(),
         company: z.string(),
-        attendance: z.enum(["inPerson", "remote"]),
-        familiarity: z.enum(["new", "heard", "some", "proficient"]),
+        remote: z.enum(["inPerson", "remote"]).transform(value => value === "remote"),
+        familiarity: zfd.numeric(z.number().min(0).max(4)),
         referrer: z.enum(["website", "meetup", "friend", "twitter", "linkedin", "search", "other"]),
-        desires: repeatableOfType(z.enum(["community", "remix", "talks", "other"])),
+        desires: zfd.repeatableOfType(z.enum(["community", "remix", "talks", "other"])),
     });
 
     const signin = await parseFormData(request, schema);
@@ -89,29 +89,25 @@ export default function SignIn() {
                     </div>
                 </fieldset>
 
-                <fieldset className="mb-4">
-                    <legend className="mb-2">How familiar are you with Remix?</legend>
+                <label className="mb-2" htmlFor="familiarity">
+                    How familiar are you with Remix?
+                </label>
 
-                    <div className="flex gap-x-2">
-                        <input id="new" name="familiarity" type="radio" value="new" />
-                        <label htmlFor="new">New to me</label>
-                    </div>
+                <div className="mb-4 flex gap-x-4">
+                    <span>Beginner</span>
 
-                    <div className="flex gap-x-2">
-                        <input id="heard" name="familiarity" type="radio" value="heard" />
-                        <label htmlFor="heard">Heard of it</label>
-                    </div>
+                    <input list="values" max={4} min={0} name="familiarity" step={1} type="range" />
 
-                    <div className="flex gap-x-2">
-                        <input id="some" name="familiarity" type="radio" value="some" />
-                        <label htmlFor="some">Some experience</label>
-                    </div>
+                    <span>Expert</span>
 
-                    <div className="flex gap-x-2">
-                        <input id="proficient" name="familiarity" type="radio" value="proficient" />
-                        <label htmlFor="proficient">Very proficient</label>
-                    </div>
-                </fieldset>
+                    <datalist id="values">
+                        <option value={0} />
+                        <option value={1} />
+                        <option value={2} />
+                        <option value={3} />
+                        <option value={4} />
+                    </datalist>
+                </div>
 
                 <fieldset className="mb-4">
                     <legend className="mb-2">How did you hear about the meetup?</legend>
