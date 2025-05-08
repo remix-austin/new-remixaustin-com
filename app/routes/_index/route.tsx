@@ -1,7 +1,17 @@
 import LinkButton from "~/components/LinkButton";
 import logo from "~/icons/logo.svg";
+import { getEvents } from "~/utils/meetup";
+import type { Route } from "./+types/route";
 
-export default function Home() {
+export async function loader() {
+    const events = await getEvents();
+    return { events };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+    const { events } = loaderData;
+    console.log(events);
+
     return (
         <>
             <title>Remix Austin</title>
