@@ -5,9 +5,9 @@
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     /* colors */
-    --color-light: #EDF0F7;
-    --color-mid: #A0ABC0;
-    --color-dark: #2D3648;
+    --color-light: #edf0f7;
+    --color-mid: #a0abc0;
+    --color-dark: #2d3648;
 
     /* intents */
     --color-text: var(--color-mid);
@@ -37,7 +37,7 @@
     --color-button-border-dark: var(--color-zinc-100);
 
     --color-button-active: var(--color-zinc-800);
-    --color-button-active-dark: var(--color-zinc-200);    
+    --color-button-active-dark: var(--color-zinc-200);
 }
 
 @layer base {
@@ -47,7 +47,7 @@
         background-color: var(--color-background);
         padding: --spacing(10) --spacing(14);
 
-        @variant dark {
+        @media (prefers-color-scheme: dark) {
             background-color: var(--color-background-dark);
         }
     }
@@ -58,7 +58,7 @@
         font-weight: var(--font-weight-semibold);
         margin-bottom: --spacing(8);
 
-        @variant dark {
+        @media (prefers-color-scheme: dark) {
             color: var(--color-gray-100);
         }
     }
@@ -78,7 +78,7 @@
     }
 
     label {
-        @variant dark {
+        @media (prefers-color-scheme: dark) {
             color: var(--color-zinc-100);
         }
     }
@@ -91,7 +91,7 @@
         padding: --spacing(1) --spacing(2);
         /* box-shadow: var(--shadow-inner); */
 
-        @variant dark {
+        @media (prefers-color-scheme: dark) {
             background-color: var(--color-input-bg-dark);
             border-color: var(--color-border-dark);
             color: var(--color-zinc-100);
@@ -110,18 +110,18 @@
         display: flex;
         cursor: pointer;
 
-        @variant dark {
+        @media (prefers-color-scheme: dark) {
             color: var(--color-button-text-dark);
             background-color: var(--color-button-bg-dark);
             border-color: var(--color-button-border-dark);
         }
 
-        @variant active {
+        &:active {
             background-color: var(--color-button-active);
             transform: translateY(1px);
             box-shadow: var(--shadow-inner);
 
-            @variant dark {
+            @media (prefers-color-scheme: dark) {
                 background-color: var(--color-button-active-dark);
             }
         }
