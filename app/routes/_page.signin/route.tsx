@@ -98,7 +98,15 @@ export default function SignIn() {
                 <div className="mb-4 flex gap-x-4">
                     <span>Beginner</span>
 
-                    <input list="values" max={4} min={0} name="familiarity" step={1} type="range" />
+                    <input
+                        id="familiarity"
+                        list="values"
+                        max={4}
+                        min={0}
+                        name="familiarity"
+                        step={1}
+                        type="range"
+                    />
 
                     <span>Expert</span>
 
