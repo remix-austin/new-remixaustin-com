@@ -23,57 +23,62 @@ export async function action({ request, context }: Route.ActionArgs) {
 
 export default function Submit() {
     return (
-        <>
-            <title>Remix Austin | Submit a talk</title>
-            <h1 className="mb-8 font-bold text-2xl">Submit a talk</h1>
+        <div className="max-w-md">
+            <title>Remix Austin | Submit a Talk</title>
+            <h1>Submit a Talk</h1>
 
-            <Form className="grid max-w-md" method="post">
-                <label htmlFor="name">Name</label>
-                <input
-                    autoComplete="name"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="name"
-                    name="name"
-                    type="text"
-                />
+            <Form method="post">
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        autoComplete="name"
+                        id="name"
+                        name="name"
+                        type="text"
+                    />
+                </div>
 
-                <label htmlFor="email">Email</label>
-                <input
-                    autoComplete="email"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="email"
-                    name="email"
-                    type="email"
-                />
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        autoComplete="email"
+                        id="email"
+                        name="email"
+                        type="email"
+                    />
+                </div>
 
-                <label htmlFor="phone">Phone</label>
-                <input
-                    autoComplete="tel"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                />
+                <div>
+                    <label htmlFor="phone">Phone</label>
+                    <input
+                        autoComplete="tel"
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                    />
+                </div>
 
-                <label htmlFor="title">Title</label>
-                <input
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="title"
-                    name="title"
-                    type="text"
-                />
+                <div>
+                    <label htmlFor="title">Title</label>
+                    <input
+                        id="title"
+                        name="title"
+                        type="text"
+                    />
+                </div>
 
-                <label htmlFor="description">Description</label>
-                <textarea
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="description"
-                    name="description"
-                />
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                    />
+                </div>
 
-                <button className="mt-4 rounded bg-blue-500 px-4 py-2 text-white" type="submit">
+                <button type="submit">
                     Submit
                 </button>
             </Form>
-        </>
+        </div>
     );
 }
