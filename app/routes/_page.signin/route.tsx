@@ -6,7 +6,7 @@ import { zfd } from "zod-form-data";
 import { signins } from "~/database/schema";
 import { RadioButton } from "~/components/RadioButton";
 import { Icon } from "~/components/Icon";
-import { Slider } from "~/components/slider";
+import { Slider } from "~/components/Slider";
 import { Checkbox } from "~/components/Checkbox";
 
 export async function action({ request, context }: Route.ActionArgs) {
