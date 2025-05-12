@@ -2,6 +2,8 @@ import LinkButton from "~/components/LinkButton";
 import logo from "~/icons/logo.svg";
 import { getEvents } from "~/utils/meetup";
 import type { Route } from "./+types/route";
+import MeetupCard from "~/components/MeetupCard";
+import TalkCard from "~/components/TalkCard";
 
 export async function loader() {
     const events = await getEvents();
@@ -9,8 +11,8 @@ export async function loader() {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-    const { events } = loaderData;
-    console.log(events);
+    const nextMeetup = loaderData.events.nextMeetup.edges[0]?.node;
+    const previousTalks = loaderData.events.previousTalks.edges;
 
     return (
         <>
@@ -34,6 +36,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                         GitHub
                     </LinkButton>
 
+                    <LinkButton target="_blank" to="https://youtube.com/@remixaustin">
+                        YouTube
+                    </LinkButton>
+
                     <LinkButton to="/signin">Sign In</LinkButton>
                     <LinkButton to="/talks/submit">Give Talk</LinkButton>
                 </div>
@@ -45,15 +51,23 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                         Next Meetup
                     </h2>
 
-                    <p>todo</p>
+                    <MeetupCard meetup={nextMeetup} />
                 </section>
 
-                <section>
+                <section className="grid gap-y-12">
                     <h2 className="font-bold text-5xl text-black" id="previous-talks">
                         Previous Talks
                     </h2>
 
-                    <p>todo</p>
+                    {/* @ts-expect-error: Fix this later */}
+                    {previousTalks.map(previousTalk => {
+                        const talk = previousTalk.node;
+                        return <TalkCard key={talk.id} talk={talk} />;
+                    })}
+
+                    <button className="justify-self-end" type="button">
+                        View more
+                    </button>
                 </section>
             </main>
         </>
