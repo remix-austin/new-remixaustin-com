@@ -10,10 +10,11 @@ const MeetupQuery = gql`
         groupByUrlname(urlname: $urlname) {
             id
             name
-            currentEvent:events(status:ACTIVE, sort:DESC, first:1) {
+            nextMeetup: events(status:ACTIVE, sort:DESC, first:1) {
                 totalCount
                 edges {
                     node {
+                        id
                         title
                         description
                         eventUrl
@@ -24,10 +25,11 @@ const MeetupQuery = gql`
                     }
                 }
             }
-            pastEvents:events(status:PAST, sort:DESC, first:5) {
+            previousTalks: events(status:PAST, sort:DESC, first:5) {
                 totalCount
                 edges {
                     node {
+                        id
                         title
                         eventUrl
                         dateTime
