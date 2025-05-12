@@ -47,7 +47,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
             <main className="grid gap-36 px-20 py-20">
                 <section>
-                    <h2 className="font-bold text-5xl text-black" id="next-meetup">
+                    <h2 className="mb-12 font-bold text-5xl text-black" id="next-meetup">
                         Next Meetup
                     </h2>
 
