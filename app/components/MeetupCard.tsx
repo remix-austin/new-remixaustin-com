@@ -8,7 +8,9 @@ type MeetupCardProps = {
 
 const MeetupCard: FC<MeetupCardProps> = ({ meetup }) => {
     if (!meetup) {
-        return <p>No upcoming meetups</p>;
+        return (
+            <em>The next meetup has not been scheduled yet. Check back soon for more details!</em>
+        );
     }
 
     return (
