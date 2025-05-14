@@ -11,8 +11,7 @@ export async function loader() {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-    const nextMeetup = loaderData.events.nextMeetup.edges[0]?.node;
-    const previousTalks = loaderData.events.previousTalks.edges;
+    const { nextMeetup, previousTalks } = loaderData.events;
 
     return (
         <>
@@ -59,10 +58,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                         Previous Talks
                     </h2>
 
-                    {/* @ts-expect-error: Fix this later */}
                     {previousTalks.map(previousTalk => {
-                        const talk = previousTalk.node;
-                        return <TalkCard key={talk.id} talk={talk} />;
+                        return <TalkCard key={previousTalk.id} talk={previousTalk} />;
                     })}
 
                     <button className="justify-self-end" type="button">
