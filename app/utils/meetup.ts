@@ -1,5 +1,16 @@
 import { Client, gql, cacheExchange, fetchExchange } from "@urql/core";
 
+type Meetup = {
+    id: string;
+    title: string;
+    description: string;
+    eventUrl: string;
+    dateTime: string;
+    rsvps: {
+        yesCount: number;
+    };
+};
+
 const client = new Client({
     url: "https://api.meetup.com/gql-ext",
     exchanges: [cacheExchange, fetchExchange],
@@ -44,8 +55,28 @@ const MeetupQuery = gql`
 
 const getEvents = async () => {
     const response = await client.query(MeetupQuery, { urlname: "remix-austin" }).toPromise();
-    const events = response.data.groupByUrlname;
+
+    const nextMeetup: Meetup = response.data.groupByUrlname.nextMeetup.edges[0]?.node;
+
+    const previousTalks: Meetup[] = response.data.groupByUrlname.previousTalks.edges.map(
+        (edge: { node: Meetup }) => ({
+            id: edge.node.id,
+            title: edge.node.title,
+            eventUrl: edge.node.eventUrl,
+            dateTime: edge.node.dateTime,
+            rsvps: {
+                yesCount: edge.node.rsvps.yesCount,
+            },
+        }),
+    );
+
+    const events = {
+        nextMeetup,
+        previousTalks,
+    };
+
     return events;
 };
 
 export { getEvents };
+export type { Meetup };
