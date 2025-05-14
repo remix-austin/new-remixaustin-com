@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import { Link } from "react-router";
 import { formatDate } from "~/utils/date";
+import type { Meetup } from "~/utils/meetup";
 
 type TalkCardProps = {
-    // biome-ignore lint/suspicious/noExplicitAny: Fix this later
-    talk: any;
+    talk: Meetup;
 };
 
 const TalkCard: FC<TalkCardProps> = ({ talk }) => {

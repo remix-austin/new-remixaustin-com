@@ -1,9 +1,9 @@
 import type { FC } from "react";
 import LinkButton from "./LinkButton";
+import type { Meetup } from "~/utils/meetup";
 
 type MeetupCardProps = {
-    // biome-ignore lint/suspicious/noExplicitAny: Fix this later
-    meetup: any;
+    meetup: Meetup;
 };
 
 const MeetupCard: FC<MeetupCardProps> = ({ meetup }) => {
