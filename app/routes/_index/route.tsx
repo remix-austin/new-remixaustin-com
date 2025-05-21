@@ -2,6 +2,8 @@ import LinkButton from "~/components/LinkButton";
 import logo from "~/icons/logo.svg";
 import { getEvents } from "~/utils/meetup";
 import type { Route } from "./+types/route";
+import MeetupCard from "~/components/MeetupCard";
+import TalkCard from "~/components/TalkCard";
 
 export async function loader() {
     const events = await getEvents();
@@ -9,8 +11,7 @@ export async function loader() {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-    const { events } = loaderData;
-    console.log(events);
+    const { nextMeetup, previousTalks } = loaderData.events;
 
     return (
         <>
@@ -34,6 +35,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                         GitHub
                     </LinkButton>
 
+                    <LinkButton target="_blank" to="https://youtube.com/@remixaustin">
+                        YouTube
+                    </LinkButton>
+
                     <LinkButton to="/signin">Sign In</LinkButton>
                     <LinkButton to="/talks/submit">Give Talk</LinkButton>
                 </div>
@@ -41,19 +46,25 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
             <main className="grid gap-36 px-20 py-20">
                 <section>
-                    <h2 className="font-bold text-5xl text-black" id="next-meetup">
+                    <h2 className="mb-12 font-bold text-5xl text-black" id="next-meetup">
                         Next Meetup
                     </h2>
 
-                    <p>todo</p>
+                    <MeetupCard meetup={nextMeetup} />
                 </section>
 
-                <section>
+                <section className="grid gap-y-12">
                     <h2 className="font-bold text-5xl text-black" id="previous-talks">
                         Previous Talks
                     </h2>
 
-                    <p>todo</p>
+                    {previousTalks.map(previousTalk => {
+                        return <TalkCard key={previousTalk.id} talk={previousTalk} />;
+                    })}
+
+                    <button className="justify-self-end" type="button">
+                        View more
+                    </button>
                 </section>
             </main>
         </>
