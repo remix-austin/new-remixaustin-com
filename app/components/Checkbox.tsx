@@ -1,13 +1,9 @@
-import type { PropsWithChildren } from "react";
-
-export function Checkbox(
-    props: {
-        name: string;
-        value: string;
-        checked?: boolean;
-        "aria-describedby"?: string;
-    } & PropsWithChildren,
-) {
+export function Checkbox(props: {
+    name: string;
+    value: string;
+    checked?: boolean;
+    "aria-describedby"?: string;
+}) {
     return (
         <div className="group grid size-4 grid-cols-1">
             <input

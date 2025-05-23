@@ -1,13 +1,13 @@
 import type { PropsWithChildren } from "react";
 
 export function RadioButton(
-    props: {
+    props: PropsWithChildren<{
         id?: string;
         name: string;
         value: string;
         checked?: boolean;
         "aria-label"?: string;
-    } & PropsWithChildren,
+    }>,
 ) {
     return (
         <label>
