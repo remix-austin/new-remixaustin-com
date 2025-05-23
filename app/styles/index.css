@@ -134,7 +134,10 @@
 
             /* Radio */
             & > input {
-                display: none;
+                position: absolute;
+                opacity: 0;
+                width: 1px;
+                height: 1px;
             }
 
             /* Radio Label */
