@@ -121,7 +121,7 @@ export default function SignIn() {
                             <Icon
                                 className="size-6 fill-red-600"
                                 name="remix"
-                                viewBox="0 0 411 473"
+                                viewBox="0 0 511 588"
                             />
                             remixaustin.com
                         </RadioButton>
@@ -141,7 +141,7 @@ export default function SignIn() {
                             <Icon
                                 className="size-6 fill-red-600"
                                 name="twitter"
-                                viewBox="0 0 540 540"
+                                viewBox="0 0 588 588"
                             />
                             Twitter
                         </RadioButton>
@@ -153,7 +153,7 @@ export default function SignIn() {
                             <Icon
                                 className="size-6 fill-red-600"
                                 name="linkedin"
-                                viewBox="0 0 491 494"
+                                viewBox="0 0 584 588"
                             />
                             LinkedIn
                         </RadioButton>
