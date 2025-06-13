@@ -38,6 +38,9 @@
 
     --color-button-active: var(--color-zinc-800);
     --color-button-active-dark: var(--color-zinc-200);
+
+    --color-ring: rgb(239 68 68 / 0.5);
+    --slider-thumb-ring-size: 3px;
 }
 
 @layer base {
@@ -121,6 +124,7 @@
             border: 1px solid var(--color-zinc-300);
             padding: --spacing(4);
             background: var(--color-white);
+            transition: box-shadow 0.2s ease-in-out;
 
             @media (prefers-color-scheme: dark) {
                 background-color: var(--color-input-bg-dark);
@@ -132,12 +136,22 @@
                 box-shadow: var(--shadow-inner);
             }
 
+            &:has(> input:focus-visible),
+            &:focus-visible {
+                box-shadow: 0 0 0 var(--slider-thumb-ring-size) var(--color-ring);
+                outline: none;
+            }
+
             /* Radio */
             & > input {
                 position: absolute;
-                opacity: 0;
+                clip: rect(0, 0, 0, 0);
                 width: 1px;
                 height: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                border: 0;
             }
 
             /* Radio Label */
@@ -162,6 +176,12 @@
         border-radius: var(--radius-sm);
         border: 1px solid var(--color-gray-300);
         background-color: var(--color-white);
+        transition: box-shadow 0.2s ease-in-out;
+        outline: none;
+
+        &:focus-visible {
+            box-shadow: 0 0 0 var(--slider-thumb-ring-size) var(--color-ring);
+        }
 
         &:checked {
             border-color: var(--color-red-600);
@@ -193,6 +213,13 @@
         }
     }
 
+    .group:focus-visible {
+        box-shadow: 0 0 0 var(--slider-thumb-ring-size) var(--color-ring);
+        outline: none;
+        border-radius: var(--radius-sm);
+    }
+
+
     input[type="text"],
     input[type="email"],
     textarea {
@@ -201,6 +228,12 @@
         border-radius: var(--radius-sm);
         padding: --spacing(1) --spacing(2);
         /* box-shadow: var(--shadow-inner); */
+        transition: box-shadow 0.2s ease-in-out;
+        outline: none;
+
+        &:focus-visible {
+            box-shadow: 0 0 0 var(--slider-thumb-ring-size) var(--color-ring);
+        }
 
         @media (prefers-color-scheme: dark) {
             background-color: var(--color-input-bg-dark);
@@ -220,6 +253,12 @@
         place-content: center;
         display: flex;
         cursor: pointer;
+        transition: box-shadow 0.2s ease-in-out;
+        outline: none;
+
+        &:focus-visible {
+            box-shadow: 0 0 0 var(--slider-thumb-ring-size) var(--color-ring);
+        }
 
         @media (prefers-color-scheme: dark) {
             color: var(--color-button-text-dark);

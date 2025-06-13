@@ -10,7 +10,7 @@ export function RadioButton(
     }>,
 ) {
     return (
-        <label>
+        <label htmlFor={props.id ?? props.value}>
             <input
                 aria-label={props["aria-label"]}
                 defaultChecked={props.checked}

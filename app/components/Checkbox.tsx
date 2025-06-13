@@ -5,7 +5,7 @@ export function Checkbox(props: {
     "aria-describedby"?: string;
 }) {
     return (
-        <div className="group grid size-4 grid-cols-1">
+        <label className="group grid size-4 grid-cols-1" htmlFor={props.value}>
             <input
                 aria-describedby={props["aria-describedby"]}
                 defaultChecked={props.checked}
@@ -35,6 +35,6 @@ export function Checkbox(props: {
                     strokeWidth={2}
                 />
             </svg>
-        </div>
+        </label>
     );
 }
