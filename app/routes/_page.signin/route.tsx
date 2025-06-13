@@ -119,9 +119,9 @@ export default function SignIn() {
                         <legend>How did you hear about the meetup?</legend>
                         <RadioButton name="referrer" value="website">
                             <Icon
-                                className="size-6 fill-red-600"
+                                className="size-5 fill-red-600"
                                 name="remix"
-                                viewBox="0 0 511 588"
+                                viewBox="0 0 391 450"
                             />
                             remixaustin.com
                         </RadioButton>
@@ -129,7 +129,7 @@ export default function SignIn() {
                             <Icon
                                 className="size-6 fill-red-600"
                                 name="meetup"
-                                viewBox="0 0 588 588"
+                                viewBox="0 0 570 552"
                             />
                             Meetup
                         </RadioButton>
@@ -139,9 +139,9 @@ export default function SignIn() {
                         </RadioButton>
                         <RadioButton name="referrer" value="twitter">
                             <Icon
-                                className="size-6 fill-red-600"
+                                className="size-5 fill-red-600"
                                 name="twitter"
-                                viewBox="0 0 588 588"
+                                viewBox="0 0 451 451"
                             />
                             Twitter
                         </RadioButton>
@@ -151,9 +151,9 @@ export default function SignIn() {
                             </RadioButton> */}
                         <RadioButton name="referrer" value="linkedin">
                             <Icon
-                                className="size-6 fill-red-600"
+                                className="size-5 fill-red-600"
                                 name="linkedin"
-                                viewBox="0 0 584 588"
+                                viewBox="0 0 448 450"
                             />
                             LinkedIn
                         </RadioButton>
