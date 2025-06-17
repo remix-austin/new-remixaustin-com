@@ -4,6 +4,10 @@ import type { Route } from "./+types/route";
 import { parseFormData } from "~/utils/forms";
 import { zfd } from "zod-form-data";
 import { signins } from "~/database/schema";
+import { RadioButton } from "~/components/RadioButton";
+import { Icon } from "~/components/Icon";
+import { Slider } from "~/components/Slider";
+import { Checkbox } from "~/components/Checkbox";
 
 export async function action({ request, context }: Route.ActionArgs) {
     const schema = zfd.formData({
@@ -27,165 +31,164 @@ export async function action({ request, context }: Route.ActionArgs) {
 
 export default function SignIn() {
     return (
-        <>
+        <div className="max-w-md">
             <title>Remix Austin | Sign In</title>
-            <h1 className="mb-8 font-bold text-2xl">Sign in to tonight's meetup</h1>
+            <h1>Sign In to Tonight's Meetup</h1>
 
-            <Form className="grid max-w-md" method="post">
+            {/* TODO: Put current meetup info here */}
+
+            <Form method="post">
                 <input
                     autoComplete="organization"
-                    className="mb-4 rounded border border-black px-4 py-2"
                     id="date"
                     name="date"
                     type="hidden"
                     value={new Date().toISOString()}
                 />
 
-                <label htmlFor="firstName">First Name</label>
-                <input
-                    autoComplete="given-name"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                />
-
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                    autoComplete="family-name"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                />
-
-                <label htmlFor="email">Email</label>
-                <input
-                    autoComplete="email"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="email"
-                    name="email"
-                    type="email"
-                />
-
-                <label htmlFor="company">Company</label>
-                <input
-                    autoComplete="organization"
-                    className="mb-4 rounded border border-black px-4 py-2"
-                    id="company"
-                    name="company"
-                    type="text"
-                />
-
-                <fieldset className="mb-4">
-                    <legend className="mb-2">How are you attending?</legend>
-
-                    <div className="flex gap-x-2">
-                        <input id="inPerson" name="remote" type="radio" value="inPerson" />
-                        <label htmlFor="inPerson">In person</label>
+                <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-2">
+                        <div>
+                            <label htmlFor="firstName">First Name</label>
+                            <input
+                                autoComplete="given-name"
+                                id="firstName"
+                                name="firstName"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="lastName">Last Name</label>
+                            <input
+                                autoComplete="family-name"
+                                id="lastName"
+                                name="lastName"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <input autoComplete="email" id="email" name="email" type="email" />
+                        </div>
+                        <div>
+                            <label htmlFor="company">Company</label>
+                            <input
+                                autoComplete="organization"
+                                id="company"
+                                name="company"
+                                type="text"
+                            />
+                        </div>
                     </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="remote" name="remote" type="radio" value="remote" />
-                        <label htmlFor="remote">Remote</label>
-                    </div>
-                </fieldset>
-
-                <label className="mb-2" htmlFor="familiarity">
-                    How familiar are you with Remix?
-                </label>
-
-                <div className="mb-4 flex gap-x-4">
-                    <span>Beginner</span>
-
-                    <input
-                        id="familiarity"
-                        list="values"
-                        max={4}
-                        min={0}
-                        name="familiarity"
-                        step={1}
-                        type="range"
-                    />
-
-                    <span>Expert</span>
-
-                    <datalist id="values">
-                        <option value={0} />
-                        <option value={1} />
-                        <option value={2} />
-                        <option value={3} />
-                        <option value={4} />
-                    </datalist>
+                    <fieldset>
+                        <legend>How are you attending?</legend>
+                        <RadioButton checked name="remote" value="inPerson">
+                            <Icon className="size-6 fill-red-600" name="meeting" />
+                            In person
+                        </RadioButton>
+                        <RadioButton name="remote" value="remote">
+                            <Icon className="size-6 fill-red-600" name="video-camera" />
+                            Remote
+                        </RadioButton>
+                    </fieldset>
+                    <fieldset>
+                        <legend>How familiar are you with Remix?</legend>
+                        <div>
+                            <span>Beginner</span>
+                            <Slider
+                                defaultValue={[2]}
+                                // FIXME: Can't figure out how to pass this through to Radix
+                                // list="values"
+                                id="familiarity"
+                                max={4}
+                                min={0}
+                                name="familiarity"
+                                step={1}
+                            />
+                            <span>Expert</span>
+                            <datalist id="values">
+                                <option value={0} />
+                                <option value={1} />
+                                <option value={2} />
+                                <option value={3} />
+                                <option value={4} />
+                            </datalist>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>How did you hear about the meetup?</legend>
+                        <RadioButton name="referrer" value="website">
+                            <Icon
+                                className="size-5 fill-red-600"
+                                name="remix"
+                                viewBox="0 0 391 450"
+                            />
+                            remixaustin.com
+                        </RadioButton>
+                        <RadioButton name="referrer" value="meetup">
+                            <Icon
+                                className="size-6 fill-red-600"
+                                name="meetup"
+                                viewBox="0 0 570 552"
+                            />
+                            Meetup
+                        </RadioButton>
+                        <RadioButton name="referrer" value="friend">
+                            <Icon className="size-6 fill-red-600" name="friends" />
+                            Friend or coworker
+                        </RadioButton>
+                        <RadioButton name="referrer" value="twitter">
+                            <Icon
+                                className="size-5 fill-red-600"
+                                name="twitter"
+                                viewBox="0 0 451 451"
+                            />
+                            Twitter
+                        </RadioButton>
+                        {/* TODO: Make an official remix.run or reactrouter.com Bluesky account */}
+                        {/* <RadioButton name="referrer" value="bsky">
+                            Bluesky
+                            </RadioButton> */}
+                        <RadioButton name="referrer" value="linkedin">
+                            <Icon
+                                className="size-5 fill-red-600"
+                                name="linkedin"
+                                viewBox="0 0 448 450"
+                            />
+                            LinkedIn
+                        </RadioButton>
+                        <RadioButton name="referrer" value="search">
+                            <Icon className="size-6 fill-red-600" name="search" />
+                            Search engine
+                        </RadioButton>
+                        <RadioButton id="otherReferrer" name="referrer" value="other">
+                            <Icon className="size-6 fill-red-600" name="other" />
+                            Other
+                        </RadioButton>
+                    </fieldset>
+                    <fieldset className="mb-4">
+                        <legend className="mb-2">What do you want to get out of the meetup?</legend>
+                        <label className="gap-2" htmlFor="community">
+                            <Checkbox name="desires" value="community" />
+                            Community
+                        </label>
+                        <label className="gap-2" htmlFor="remix">
+                            <Checkbox name="desires" value="remix" />
+                            Remix experience
+                        </label>
+                        <label className="gap-2" htmlFor="talks">
+                            <Checkbox name="desires" value="talks" />
+                            Tech talks
+                        </label>
+                        <label className="gap-2" htmlFor="other">
+                            <Checkbox name="desires" value="other" />
+                            Other
+                        </label>
+                    </fieldset>
                 </div>
 
-                <fieldset className="mb-4">
-                    <legend className="mb-2">How did you hear about the meetup?</legend>
-
-                    <div className="flex gap-x-2">
-                        <input id="website" name="referrer" type="radio" value="website" />
-                        <label htmlFor="website">remixaustin.com</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="meetup" name="referrer" type="radio" value="meetup" />
-                        <label htmlFor="meetup">Meetup</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="friend" name="referrer" type="radio" value="friend" />
-                        <label htmlFor="friend">Friend or coworker</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="twitter" name="referrer" type="radio" value="twitter" />
-                        <label htmlFor="twitter">Twitter</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="linkedin" name="referrer" type="radio" value="linkedin" />
-                        <label htmlFor="linkedin">LinkedIn</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="search" name="referrer" type="radio" value="search" />
-                        <label htmlFor="search">Search engine</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="otherReferrer" name="referrer" type="radio" value="other" />
-                        <label htmlFor="otherReferrer">Other</label>
-                    </div>
-                </fieldset>
-
-                <fieldset className="mb-4">
-                    <legend className="mb-2">What do you want to get out of the meetup?</legend>
-
-                    <div className="flex gap-x-2">
-                        <input id="community" name="desires" type="checkbox" value="community" />
-                        <label htmlFor="community">Community</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="remix" name="desires" type="checkbox" value="remix" />
-                        <label htmlFor="remix">Remix experience</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="talks" name="desires" type="checkbox" value="talks" />
-                        <label htmlFor="talks">Tech talks</label>
-                    </div>
-
-                    <div className="flex gap-x-2">
-                        <input id="otherDesires" name="desires" type="checkbox" value="other" />
-                        <label htmlFor="otherDesires">Other</label>
-                    </div>
-                </fieldset>
-
-                <button className="mt-4 rounded bg-blue-500 px-4 py-2 text-white" type="submit">
-                    Submit
-                </button>
+                <button type="submit">Sign In</button>
             </Form>
-        </>
+        </div>
     );
 }
