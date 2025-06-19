@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite dev",
-        "fmt": "biome check --write --unsafe --assists-enabled=true .",
+        "fmt": "biome check --write --unsafe --assist-enabled=true .",
         "db:generate": "drizzle-kit generate",
         "db:migrate": "drizzle-kit migrate",
         "db:studio": "drizzle-kit studio",
