@@ -1,5 +1,5 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
     "vcs": {
         "enabled": true,
         "clientKind": "git",
@@ -23,8 +23,13 @@
             "quoteStyle": "double"
         }
     },
-    "organizeImports": {
-        "enabled": true
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "on",
+                "useSortedProperties": "on"
+            }
+        }
     },
     "linter": {
         "enabled": true,
@@ -36,30 +41,58 @@
                 "noUnusedPrivateClassMembers": "warn",
                 "useExhaustiveDependencies": "warn",
                 "useHookAtTopLevel": "error",
-                "noEmptyPattern": "warn"
+                "noEmptyPattern": "warn",
+                "noUnknownPseudoClass": "error",
+                "noUnknownPseudoElement": "error",
+                "noUnknownTypeSelector": "error"
             },
             "suspicious": {
-                "noEmptyInterface": "warn"
-            },
-            "complexity": {
-                "noBannedTypes": "warn"
-            },
-            "nursery": {
-                "noCommonJs": "warn",
+                "noEmptyInterface": "warn",
                 "noDocumentCookie": "error",
                 "noDuplicateCustomProperties": "error",
                 "noDuplicateElseIf": "error",
                 "noDuplicateProperties": "error",
-                "noEnum": "error",
                 "noIrregularWhitespace": "error",
-                "noSecrets": "error",
-                "noSubstr": "warn",
-                "noTemplateCurlyInString": "warn",
-                "noUnknownPseudoClass": "error",
-                "noUnknownPseudoElement": "error",
-                "noUnknownTypeSelector": "error",
+                "noTemplateCurlyInString": "warn"
+            },
+            "complexity": {
+                "noBannedTypes": "warn",
                 "noUselessEscapeInRegex": "warn",
-                "noUselessStringRaw": "warn",
+                "noUselessStringRaw": "warn"
+            },
+            "nursery": {
+                "noSecrets": "error",
+                "useSortedClasses": {
+                    "level": "error",
+                    "options": {
+                        "attributes": ["className"],
+                        "functions": ["cva", "cx", "clsx"]
+                    }
+                }
+            },
+            "performance": {
+                "noBarrelFile": "warn",
+                "useTopLevelRegex": "warn"
+            },
+            "style": {
+                "noNamespace": "error",
+                "noNonNullAssertion": "off",
+                "useFragmentSyntax": "warn",
+                "useImportType": "error",
+                "useNodejsImportProtocol": "error",
+                "noParameterAssign": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error",
+                "noUnusedTemplateLiteral": "error",
+                "useNumberNamespace": "error",
+                "noInferrableTypes": "error",
+                "noUselessElse": "error",
+                "noCommonJs": "warn",
+                "noEnum": "error",
+                "noSubstr": "warn",
                 "useAtIndex": "warn",
                 "useCollapsedIf": "warn",
                 "useComponentExportOnlyModules": {
@@ -86,38 +119,18 @@
                         "accessibility": "none"
                     }
                 },
-                "useSortedClasses": {
-                    "level": "error",
-                    "options": {
-                        "attributes": ["className"],
-                        "functions": ["cva", "cx", "clsx"]
-                    }
-                },
                 "useTrimStartEnd": "error",
+                "useConsistentArrayType": {
+                    "level": "warn",
+                    "options": { "syntax": "shorthand" }
+                }
+            },
+            "a11y": {
                 "useValidAutocomplete": "error"
-            },
-            "performance": {
-                "noBarrelFile": "warn",
-                "useTopLevelRegex": "warn"
-            },
-            "style": {
-                "noNamespace": "error",
-                "noNonNullAssertion": "off",
-                "useFragmentSyntax": "warn",
-                "useImportType": "error",
-                "useNodejsImportProtocol": "error",
-                "useShorthandArrayType": "warn"
-            }
-        }
-    },
-    "assists": {
-        "actions": {
-            "source": {
-                "sortJsxProps": "on"
             }
         }
     },
     "files": {
-        "ignore": ["worker-configuration.d.ts"]
+        "includes": ["**", "!**/worker-configuration.d.ts"]
     }
 }

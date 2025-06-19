@@ -28,7 +28,7 @@
         "zod-form-data": "^2.0.7"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.9.4",
+        "@biomejs/biome": "^2.0.0",
         "@cloudflare/vite-plugin": "^1.1.1",
         "@cloudflare/workers-types": "^4.20250507.0",
         "@react-router/dev": "^7.5.3",
